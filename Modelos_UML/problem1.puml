@@ -1,44 +1,42 @@
 @startuml
 abstract class Personaje {
-    - int vida
-    - int exp
-    - int batallasGanadas
-    + Personaje(int vida)
-    + <<>>void atacar(Personaje personaje)
-    + int defensa()
-    + String toString()
+    - vida: int
+    - experiencia: int
+    - batallasGanadas: int
+    + Personaje(vida: int)
+    + <<abstract>> atacar(enemigo: Personaje): void
+    + <<abstract>> defensa(): int
+    + subirNivel(): void
+    + toString(): String
 }
 
 class Guerrero {
-    - String habilidad
-    + Guerrero(int vida, String habilidad)
-    + void atacar(Personaje personaje)
-    + int defensa()
-    + String toString()
+    - fuerza: int
+    + Guerrero(vida: int, fuerza: int)
+    + atacar(enemigo: Personaje): void
+    + defensa(): int
 }
 
 class Mago {
-    - String estrategia
-    + Mago(int vida, String estrategia)
-    + void atacar(Personaje personaje)
-    + int defensa()
-    + String toString()
+    - mana: int
+    + Mago(vida: int, mana: int)
+    + atacar(enemigo: Personaje): void
+    + defensa(): int
 }
 
 class Arquero {
-    - String atributos
-    + Arquero(int vida, String atributos)
-    + void atacar(Personaje personaje)
-    + int defensa()
-    + String toString()
+    - precision: int
+    + Arquero(vida: int, precision: int)
+    + atacar(enemigo: Personaje): void
+    + defensa(): int
 }
 
-class Main {
-    + main(String[] args)
+class P1JuegoRolEjecutor {
+    + main(args: String[]): void
 }
 
 Personaje <|-- Guerrero
 Personaje <|-- Mago
 Personaje <|-- Arquero
-Main ... Personaje
+P1JuegoRolEjecutor ... Personaje
 @enduml

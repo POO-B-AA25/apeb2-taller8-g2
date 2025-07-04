@@ -24,7 +24,6 @@ bin/
 
 ### VS Code ###
 .vscode/
-#/Modelos_UML/*.puml
 
 ### Mac OS ###
 .DS_Store

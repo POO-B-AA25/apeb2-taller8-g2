@@ -1,0 +1,36 @@
+@startuml
+abstract class Nacion {
+    - nombre: String
+    - poblacion: int
+    - recursos: double
+    - poderMilitar: int
+    - enConflicto: boolean
+    + <<abstract>> calcularImpacto(): int
+    + toString(): String
+}
+
+class NacionDesarrollada {
+    - tecnologiaAvanzada: boolean
+    + calcularImpacto(): int
+}
+
+class NacionEnDesarrollo {
+    - recursosLimitados: boolean
+    + calcularImpacto(): int
+}
+
+class Conflicto {
+    - nacionA: Nacion
+    - nacionB: Nacion
+    + simular(): void
+}
+
+class P6SimuladorEjecutor {
+    + main(args: String[]): void
+}
+
+Nacion <|-- NacionDesarrollada
+Nacion <|-- NacionEnDesarrollo
+Conflicto --> Nacion
+P6SimuladorEjecutor ... Nacion
+@enduml

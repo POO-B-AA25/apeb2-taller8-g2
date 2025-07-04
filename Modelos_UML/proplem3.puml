@@ -1,0 +1,34 @@
+@startuml
+abstract class Jugador {
+    - nombre: String
+    - dorsal: int
+    - rut: String
+    - goles: int
+    + <<abstract>> calcularValoracion(): double
+    + toString(): String
+}
+
+class Atacante {
+    - recuperaciones: int
+    + calcularValoracion(): double
+}
+
+class Defensor {
+    - recuperaciones: int
+    + calcularValoracion(): double
+}
+
+class Portero {
+    - atajadas: int
+    + calcularValoracion(): double
+}
+
+class P3EstadisticaEjecutor {
+    + main(args: String[]): void
+}
+
+Jugador <|-- Atacante
+Jugador <|-- Defensor
+Jugador <|-- Portero
+P3EstadisticaEjecutor ... Jugador
+@enduml

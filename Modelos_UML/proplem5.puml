@@ -1,0 +1,31 @@
+@startuml
+abstract class Emprendimiento {
+    - nombre: String
+    - mision: String
+    + registrarProducto(nombre: String): void
+    + <<abstract>> participarFeria(tipo: String): String
+    + <<abstract>> evolucionar(): void
+    + toString(): String
+}
+
+class EmprendimientoTecnologico
+class EmprendimientoArtesanal
+class EmprendimientoAgropecuario
+class EmprendimientoGastronomico
+
+class Mentor {
+    - nombre: String
+    - especialidad: String
+}
+
+class P5EmprendimientoEjecutor {
+    + main(args: String[]): void
+}
+
+Emprendimiento <|-- EmprendimientoTecnologico
+Emprendimiento <|-- EmprendimientoArtesanal
+Emprendimiento <|-- EmprendimientoAgropecuario
+Emprendimiento <|-- EmprendimientoGastronomico
+Emprendimiento --> "*" Mentor
+P5EmprendimientoEjecutor ... Emprendimiento
+@enduml

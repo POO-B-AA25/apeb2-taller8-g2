@@ -1,0 +1,44 @@
+@startuml
+abstract class Personaje {
+    - int vida
+    - int exp
+    - int batallasGanadas
+    + Personaje(int vida)
+    + <<>>void atacar(Personaje personaje)
+    + int defensa()
+    + String toString()
+}
+
+class Guerrero {
+    - String habilidad
+    + Guerrero(int vida, String habilidad)
+    + void atacar(Personaje personaje)
+    + int defensa()
+    + String toString()
+}
+
+class Mago {
+    - String estrategia
+    + Mago(int vida, String estrategia)
+    + void atacar(Personaje personaje)
+    + int defensa()
+    + String toString()
+}
+
+class Arquero {
+    - String atributos
+    + Arquero(int vida, String atributos)
+    + void atacar(Personaje personaje)
+    + int defensa()
+    + String toString()
+}
+
+class Main {
+    + main(String[] args)
+}
+
+Personaje <|-- Guerrero
+Personaje <|-- Mago
+Personaje <|-- Arquero
+Main ... Personaje
+@enduml

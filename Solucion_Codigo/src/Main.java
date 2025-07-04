@@ -4,9 +4,9 @@ public class Main {
         Personaje arquero;
         Personaje mago;
 
-        guerrero = new Guerrero(6, "Gigante");
-        arquero = new Arquero(3, "Arquero");
-        mago = new Mago(4, "Mago");
+        guerrero = new Guerrero(6, "Gigante", "Fuerza");
+        arquero = new Arquero(3, "Arquero", "");
+        mago = new Mago(4, "Mago", "");
 
         System.out.println(guerrero);
         System.out.println(mago);
@@ -15,11 +15,13 @@ public class Main {
 }
 
 abstract class Personaje {
-    public Personaje(int vida) {
-        this.vida = vida;
-    }
-
     public int vida, exp, batallasGanadas;
+    public String nombre;
+
+    public Personaje(int vida, String nombre) {
+        this.vida = vida;
+        this.nombre = nombre;
+    }
 
     public abstract void atacar(Personaje personaje);
 
@@ -38,8 +40,8 @@ abstract class Personaje {
 class Guerrero extends Personaje {
     public String habilidad;
 
-    public Guerrero(int vida, String habilidad) {
-        super(vida);
+    public Guerrero(int vida, String nombre, String habilidad) {
+        super(vida, nombre);
         this.habilidad = habilidad;
     }
 
@@ -75,8 +77,8 @@ class Guerrero extends Personaje {
 class Mago extends Personaje {
     public String estrategia;
 
-    public Mago(int vida, String estrategia) {
-        super(vida);
+    public Mago(int vida, String nombre, String estrategia) {
+        super(vida, nombre);
         this.estrategia = estrategia;
     }
 
@@ -100,8 +102,8 @@ class Mago extends Personaje {
 class Arquero extends Personaje {
     public String atributos;
 
-    public Arquero(int vida, String atributos) {
-        super(vida);
+    public Arquero(int vida, String nombre, String atributos) {
+        super(vida, nombre);
         this.atributos = atributos;
     }
 

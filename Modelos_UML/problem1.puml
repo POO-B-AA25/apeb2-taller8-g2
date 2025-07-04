@@ -3,32 +3,35 @@ abstract class Personaje {
     - vida: int
     - experiencia: int
     - batallasGanadas: int
-    + Personaje(vida: int)
+    - nombre: String
+    + Personaje(vida: int, nombre: String)
     + <<abstract>> atacar(enemigo: Personaje): void
     + <<abstract>> defensa(): int
-    + subirNivel(): void
     + toString(): String
 }
 
 class Guerrero {
-    - fuerza: int
-    + Guerrero(vida: int, fuerza: int)
+    - habilidad: String
+    + Guerrero(vida: int, nombre: String, habilidad: String)
     + atacar(enemigo: Personaje): void
     + defensa(): int
+    + toString(): String
 }
 
 class Mago {
-    - mana: int
-    + Mago(vida: int, mana: int)
+    - estrategia: String
+    + Mago(vida: int, nombre: String, estrategia: String)
     + atacar(enemigo: Personaje): void
     + defensa(): int
+    + toString(): String
 }
 
 class Arquero {
-    - precision: int
-    + Arquero(vida: int, precision: int)
+    - atributos: String
+    + Arquero(vida: int, nombre: String, atributos: String)
     + atacar(enemigo: Personaje): void
     + defensa(): int
+    + toString(): String
 }
 
 class P1JuegoRolEjecutor {

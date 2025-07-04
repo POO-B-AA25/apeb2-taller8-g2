@@ -19,9 +19,9 @@ public class P1JuegoRolEjecutor {
         String nombre = sc.nextLine();
 
         switch (opc) {
-            case 1 -> jugador = new Guerrero(10, nombre, "Espada legendaria");
-            case 2 -> jugador = new Mago(7, nombre, "Hechizo ancestral");
-            case 3 -> jugador = new Arquero(8, nombre, "Tiro certero");
+            case 1 -> jugador = new Guerrero(6, nombre, "Espada legendaria");
+            case 2 -> jugador = new Mago(3, nombre, "Hechizo ancestral");
+            case 3 -> jugador = new Arquero(5, nombre, "Tiro certero");
             default -> System.out.println("Opción inválida");
         }
 
@@ -30,8 +30,8 @@ public class P1JuegoRolEjecutor {
         System.out.println("\n🧍 Tu personaje: " + jugador);
 
         // 2 enemigos predeterminados
-        Personaje enemigo1 = new Guerrero(9, "Thorin", "Hacha de guerra");
-        Personaje enemigo2 = new Mago(6, "Saruman", "Magia negra");
+        Personaje enemigo1 = new Guerrero(6, "Thorin", "Hacha de guerra");
+        Personaje enemigo2 = new Mago(3, "Saruman", "Magia negra");
 
         combate(jugador, enemigo1);
         if (jugador.estaVivo()) combate(jugador, enemigo2);
@@ -45,16 +45,16 @@ public class P1JuegoRolEjecutor {
 
     public static void combate(Personaje a, Personaje b) throws Exception {
         System.out.println("\n⚔️ Inicia combate entre " + a.nombre + " y " + b.nombre);
-        for (int i = 1; i <= 2; i++) {
+        for (int i = 1; i <= 6; i++) {
             if (!a.estaVivo() || !b.estaVivo()) break;
 
             System.out.println("\n🔁 Turno " + i);
             a.atacar(b);
-            Thread.sleep(1500); // Espera 1.5s
+            Thread.sleep(150); // Espera 0.15s
 
             if (b.estaVivo()) {
                 b.atacar(a);
-                Thread.sleep(1500);
+                Thread.sleep(150);
             }
         }
 

@@ -4,33 +4,37 @@ abstract class Personaje {
     - experiencia: int
     - batallasGanadas: int
     - nombre: String
-    + Personaje(vida: int, nombre: String)
-    + <<abstract>> atacar(enemigo: Personaje): void
-    + <<abstract>> defensa(): int
+    - armadura: int
+    + Personaje(vida: int, nombre: String, armadura: int)
+    + recibirDanio(): void
+    + estaVivo(): boolean
+    + subirNivel(): void
+    + <<abstract>> atacar(personaje: Personaje): void
+    + <<abstract>> defensa(): void
     + toString(): String
 }
 
 class Guerrero {
     - habilidad: String
     + Guerrero(vida: int, nombre: String, habilidad: String)
-    + atacar(enemigo: Personaje): void
-    + defensa(): int
+    + atacar(personaje: Personaje): void
+    + defensa(): void
     + toString(): String
 }
 
 class Mago {
     - estrategia: String
     + Mago(vida: int, nombre: String, estrategia: String)
-    + atacar(enemigo: Personaje): void
-    + defensa(): int
+    + atacar(personaje: Personaje): void
+    + defensa(): void
     + toString(): String
 }
 
 class Arquero {
     - atributos: String
     + Arquero(vida: int, nombre: String, atributos: String)
-    + atacar(enemigo: Personaje): void
-    + defensa(): int
+    + atacar(personaje: Personaje): void
+    + defensa(): void
     + toString(): String
 }
 
@@ -41,5 +45,7 @@ class P1JuegoRolEjecutor {
 Personaje <|-- Guerrero
 Personaje <|-- Mago
 Personaje <|-- Arquero
-P1JuegoRolEjecutor ... Personaje
+P1JuegoRolEjecutor ---> Guerrero
+P1JuegoRolEjecutor ---> Mago
+P1JuegoRolEjecutor ---> Arquero
 @enduml

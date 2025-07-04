@@ -27,5 +27,5 @@ Emprendimiento <|-- EmprendimientoArtesanal
 Emprendimiento <|-- EmprendimientoAgropecuario
 Emprendimiento <|-- EmprendimientoGastronomico
 Emprendimiento --> "*" Mentor
-P5EmprendimientoEjecutor ... Emprendimiento
+P5EmprendimientoEjecutor --> Emprendimiento
 @enduml

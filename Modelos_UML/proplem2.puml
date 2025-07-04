@@ -47,5 +47,5 @@ Menu <|-- MenuDia
 Menu <|-- MenuNinos
 Menu <|-- MenuEconomico
 Cuenta --> "*" Menu
-P2MenuEjecutor ... Menu
+P2MenuEjecutor ---> Menu
 @enduml

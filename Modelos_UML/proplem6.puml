@@ -32,5 +32,5 @@ class P6SimuladorEjecutor {
 Nacion <|-- NacionDesarrollada
 Nacion <|-- NacionEnDesarrollo
 Conflicto --> Nacion
-P6SimuladorEjecutor ... Nacion
+P6SimuladorEjecutor ---> Nacion
 @enduml

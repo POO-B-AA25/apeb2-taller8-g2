@@ -30,5 +30,5 @@ class P3EstadisticaEjecutor {
 Jugador <|-- Atacante
 Jugador <|-- Defensor
 Jugador <|-- Portero
-P3EstadisticaEjecutor ... Jugador
+P3EstadisticaEjecutor --> Jugador
 @enduml

@@ -1,43 +1,73 @@
+import java.util.Scanner;
+
 public class P1JuegoRolEjecutor {
-    public static void main(String[] args) {
-        Personaje guerrero = new Guerrero(10, "Thorin", "Hacha doble");
-        Personaje arquero = new Arquero(8, "Legolas", "Precisión");
-        Personaje mago = new Mago(7, "Gandalf", "Hechizo de fuego");
+    public static void main(String[] args) throws Exception {
+        Scanner sc = new Scanner(System.in);
+        Personaje jugador = null;
 
-        System.out.println("=== Personajes Iniciales ===");
-        System.out.println(guerrero);
-        System.out.println(arquero);
-        System.out.println(mago);
+        System.out.println("🎮 Bienvenido al juego de roles");
+        System.out.println("Elige tu personaje:");
+        System.out.println("1. Guerrero");
+        System.out.println("2. Mago");
+        System.out.println("3. Arquero");
+        System.out.print(">> ");
 
-        combate(guerrero, mago);
-        combate(mago, arquero);
-        combate(arquero, guerrero);
+        int opc = sc.nextInt();
+        sc.nextLine(); // limpiar buffer
 
-        System.out.println("\n=== Estado Final ===");
-        System.out.println(guerrero);
-        System.out.println(arquero);
-        System.out.println(mago);
+        System.out.print("Ingresa el nombre de tu personaje: ");
+        String nombre = sc.nextLine();
+
+        switch (opc) {
+            case 1 -> jugador = new Guerrero(10, nombre, "Espada legendaria");
+            case 2 -> jugador = new Mago(7, nombre, "Hechizo ancestral");
+            case 3 -> jugador = new Arquero(8, nombre, "Tiro certero");
+            default -> System.out.println("Opción inválida");
+        }
+
+        if (jugador == null) return;
+
+        System.out.println("\n🧍 Tu personaje: " + jugador);
+
+        // 2 enemigos predeterminados
+        Personaje enemigo1 = new Guerrero(9, "Thorin", "Hacha de guerra");
+        Personaje enemigo2 = new Mago(6, "Saruman", "Magia negra");
+
+        combate(jugador, enemigo1);
+        if (jugador.estaVivo()) combate(jugador, enemigo2);
+
+        System.out.println("\n🏁 Juego finalizado");
+        System.out.println("👉 Resultado final:");
+        System.out.println(jugador);
+        System.out.println(enemigo1);
+        System.out.println(enemigo2);
     }
 
-    public static void combate(Personaje a, Personaje b) {
-        System.out.println("\n💥 Inicia combate entre " + a.nombre + " y " + b.nombre);
-        for (int i = 1; i <= 3; i++) {
+    public static void combate(Personaje a, Personaje b) throws Exception {
+        System.out.println("\n⚔️ Inicia combate entre " + a.nombre + " y " + b.nombre);
+        for (int i = 1; i <= 2; i++) {
+            if (!a.estaVivo() || !b.estaVivo()) break;
+
             System.out.println("\n🔁 Turno " + i);
             a.atacar(b);
-            if (!b.estaVivo()) break;
+            Thread.sleep(1500); // Espera 1.5s
 
-            b.atacar(a);
-            if (!a.estaVivo()) break;
+            if (b.estaVivo()) {
+                b.atacar(a);
+                Thread.sleep(1500);
+            }
         }
 
         System.out.println("\n⏸️ Entretiempo - Recuperación");
-        a.defensa();
-        b.defensa();
+        if (a.estaVivo()) a.defensa();
+        if (b.estaVivo()) b.defensa();
+        Thread.sleep(1000); // Espera 1s
 
-        System.out.println("🔄 Estado tras combate:");
+        System.out.println("\n📊 Estado tras combate:");
         System.out.println(a);
         System.out.println(b);
     }
+
 }
 
 // CLASE BASE
@@ -59,7 +89,7 @@ abstract class Personaje {
     public void recibirDanio() {
         if (armadura > 0) {
             armadura--;
-            System.out.println(nombre + " bloqueó el ataque con armadura. Armadura restante: " + armadura);
+            System.out.println(nombre + " bloqueó el ataque. Armadura restante: " + armadura);
         } else {
             vida -= 2;
             System.out.println(nombre + " recibió 2 de daño. Vida restante: " + vida);
@@ -74,7 +104,7 @@ abstract class Personaje {
         if (experiencia >= 5) {
             experiencia = 0;
             vida += 2;
-            System.out.println(nombre + " ha subido de nivel. Nueva vida: " + vida);
+            System.out.println(nombre + " subió de nivel. Nueva vida: " + vida);
         }
     }
 

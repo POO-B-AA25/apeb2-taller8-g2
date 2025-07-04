@@ -27,5 +27,5 @@ class P4MonitoreoEjecutor {
 Dispositivo <|-- DispositivoCosta
 Dispositivo <|-- DispositivoSierra
 Dispositivo <|-- DispositivoOriente
-P4MonitoreoEjecutor ... Dispositivo
+P4MonitoreoEjecutor --> Dispositivo
 @enduml
